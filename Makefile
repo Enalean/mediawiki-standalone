@@ -10,12 +10,12 @@ help:
 	@echo "(Other less used targets are available, open Makefile for details)"
 
 dev-setup: ## Setup environment MediaWiki Tuleap Edition (should only be run once)
-	git clone -b $(MWVERSION) https://github.com/wikimedia/mediawiki
+	git clone -b $(MWVERSION) https://github.com/wikimedia/mediawiki dev
+	cd dev && composer update
 
 build-latest: ## Create a tarball of MediaWiki Tuleap Edition from the latest sources
 	cd dist && git clone -b $(MWVERSION) --depth 1 https://github.com/wikimedia/mediawiki
 	cp -p buildfiles/* dist/mediawiki
-	#cd dist/mediawiki && composer install --classmap-authoritative --no-dev --no-interaction --no-scripts --prefer-dist
 	cd dist/mediawiki && composer update --classmap-authoritative --no-dev --no-interaction --prefer-dist
 	mv dist/mediawiki/vendor dist/mediawiki/vendor_by_composer
 	cd dist/mediawiki && git submodule update --init --recursive
@@ -29,4 +29,4 @@ build-latest: ## Create a tarball of MediaWiki Tuleap Edition from the latest so
 	find dist/mediawiki/ -type f -name "phpunit.xml.dist" | xargs rm -rf
 	find dist/mediawiki/ -type d -name "tests" | xargs rm -rf
 	tar cfz dist/mediawiki.tar.gz dist/mediawiki/
-	#rm -rf dist/mediawiki/
+	rm -rf dist/mediawiki/

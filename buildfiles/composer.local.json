@@ -4,10 +4,21 @@
 		"url": "https://github.com/wikimedia/mediawiki-extensions-TuleapIntegration"
 	},{
 		"type": "vcs",
+		"url": "https://github.com/wikimedia/mediawiki-extensions-TuleapWikiFarm"
+	},{
+		"type": "vcs",
 		"url": "https://github.com/wikimedia/mediawiki-skins-TuleapSkin"
 	}],
 	"require": {
 		"mediawiki/tuleap-integration": "dev-master",
+		"mediawiki/tuleap-wikifarm": "dev-master",
 		"mediawiki/tuleap-skin": "dev-master"
+	},
+	"extra": {
+		"merge-plugin": {
+			"include": [
+				"extensions/OATHAuth/composer.json"
+			]
+		}
 	}
 }
