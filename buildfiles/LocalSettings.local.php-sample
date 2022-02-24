@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * This file is meant to be copied to `LocalSettings.local.php` and modified at installation time
+ */
+$GLOBALS['wgTuleapPreSharedKey'] = '###TULEAPPRESHAREDKEY###';
+$GLOBALS['wgTuleapUrl'] = '###TULEAPURL###';
+$GLOBALS['wgTuleapOAuth2Config'] = [
+	'clientId' => '###TULEAPAUTHCLIENTID###',
+	'clientSecret' => '###TULEAPAUTHCLIENTSECRET###'
+];

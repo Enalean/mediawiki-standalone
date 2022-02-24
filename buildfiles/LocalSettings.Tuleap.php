@@ -1,12 +1,5 @@
 <?php
 
-### Farm Instance Configuration Dispatcher - START ###
-$GLOBALS['wgTuleapPreSharedKey'] = getenv( 'tuleap_farm_psk' );
-$GLOBALS['wgTuleapInstancesDir'] = getenv( 'tuleap_farm_instances_dir' );
-// This will load the specific instance configuration and set required paths
-require_once( $GLOBALS['IP'] . '/extensions/TuleapWikiFarm/TuleapWikiFarm.setup.php' );
-### Farm Instance Configuration Dispatcher - END ###
-
 ### Third Party Extensions - START ###
 // ERM27085 - Extensions that were enabled in MediaWiki 1.23
 wfLoadExtensions( [
@@ -14,7 +7,7 @@ wfLoadExtensions( [
 	'Cite',
 	'ImageMap',
 	'InputBox',
-	#'LabeledSectionTransclusion'
+	'LabeledSectionTransclusion',
 	'ParserFunctions',
 	'SyntaxHighlight_GeSHi',
 	'WikiEditor',
@@ -49,13 +42,9 @@ $GLOBALS['wgUrlProtocols'][] = 'redis://'; // From old MediaWiki 1.23
 
 ### Tuleap Specific - START ###
 wfLoadExtension( 'TuleapIntegration' );
-$GLOBALS['wgTuleapUrl'] = getenv( 'tuleap_url' );
-$GLOBALS['wgTuleapOAuth2Config'] = [
-	'clientId' => getenv( 'tuleap_auth_client_id' ),
-	'clientSecret' => getenv( 'tuleap_auth_client_secret' ),
-	// May need to be adapted, based on the article path of the final wiki
-	'redirectUri' => $GLOBALS['wgServer'] . $GLOBALS['wgScriptPath'] . '/index.php/Special:TuleapLogin/callback'
-];
+$GLOBALS['wgTuleapOAuth2Config']['redirectUri']
+	= $GLOBALS['wgServer'] . $GLOBALS['wgScriptPath']
+		. '/Special:TuleapLogin/callback';
 
 wfLoadSkin( 'TuleapSkin' );
 ### Tuleap Specific - END ###
