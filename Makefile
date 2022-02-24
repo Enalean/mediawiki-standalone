@@ -11,11 +11,17 @@ help:
 
 dev-setup: ## Setup environment MediaWiki Tuleap Edition (should only be run once)
 	git clone -b $(MWVERSION) https://github.com/wikimedia/mediawiki dev
-	cd dev && composer update
+	cp -rp buildfiles/* dev/
+	cd dev/ && composer update
+	mv dev/vendor dev/vendor_by_composer
+	cd dev/ && git submodule update --init --recursive
+	rm -rf dev/vendor
+	mv dev/vendor_by_composer dev/vendor
+	cd dev/extensions/VisualEditor && git submodule foreach --recursive git reset --hard && git submodule update --init --recursive
 
 build-latest: ## Create a tarball of MediaWiki Tuleap Edition from the latest sources
 	cd dist && git clone -b $(MWVERSION) --depth 1 https://github.com/wikimedia/mediawiki
-	cp -p buildfiles/* dist/mediawiki
+	cp -rp buildfiles/* dist/mediawiki
 	cd dist/mediawiki && composer update --classmap-authoritative --no-dev --no-interaction --prefer-dist
 	mv dist/mediawiki/vendor dist/mediawiki/vendor_by_composer
 	cd dist/mediawiki && git submodule update --init --recursive

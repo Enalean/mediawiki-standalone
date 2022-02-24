@@ -1,5 +1,20 @@
 {
 	"repositories": [{
+		"type": "package",
+		"package": [{
+			"name": "mediawiki/labeled-section-transclusion",
+			"type": "mediawiki-extension",
+			"version": "dev-REL1_35",
+			"require": {
+				"composer/installers": "~1.0"
+			},
+			"source": {
+				"url": "https://gerrit.wikimedia.org/r/mediawiki/extensions/LabeledSectionTransclusion.git",
+				"type": "git",
+				"reference": "REL1_35"
+			}
+		}]
+	},{
 		"type": "vcs",
 		"url": "https://github.com/wikimedia/mediawiki-extensions-TuleapIntegration"
 	},{
@@ -10,8 +25,9 @@
 		"url": "https://github.com/wikimedia/mediawiki-skins-TuleapSkin"
 	}],
 	"require": {
+		"mediawiki/labeled-section-transclusion": "dev-REL1_35",
 		"mediawiki/tuleap-integration": "dev-master",
-		"mediawiki/tuleap-wikifarm": "dev-master",
+		"mediawiki/tuleap-wiki-farm": "dev-master",
 		"mediawiki/tuleap-skin": "dev-master"
 	},
 	"extra": {
