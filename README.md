@@ -13,7 +13,7 @@ The package contains the file `LocalSettings.local.php-sample`. After extracting
 
 ## Installation
 
-1. Make sure to have prepatred the `LocalSettings.local.php` file as described above
+1. Make sure to have prepared the `LocalSettings.local.php` file as described above
 2. Run the commandline installer of MediaWiki Tuleap Edition
 
 CLI Installer:
