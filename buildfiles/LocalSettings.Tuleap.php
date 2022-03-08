@@ -1,5 +1,13 @@
 <?php
 
+//TODO: Move to `Extension:TuleapWikiFarm`
+$GLOBALS['wgArticlePath'] = '/mediawiki/' . FARMER_CALLED_INSTANCE . '/wiki/$1';
+$GLOBALS['wgUploadPath'] = '/mediawiki/' . FARMER_CALLED_INSTANCE . '/img_auth.php';
+if ( FARMER_IS_ROOT_WIKI_CALL ) {
+	$GLOBALS['wgArticlePath'] = '/mediawiki/wiki/$1';
+	$GLOBALS['wgUploadPath'] = '/mediawiki/w/img_auth.php';
+}
+
 ### Third Party Extensions - START ###
 // ERM27085 - Extensions that were enabled in MediaWiki 1.23
 wfLoadExtensions( [
@@ -33,6 +41,17 @@ wfLoadExtensions( [
 	'TextExtracts'
 ] );
 ### Third Party Extensions - END ###
+
+wfLoadExtension( 'Math' );
+$GLOBALS['wgMathValidModes'] = [ 'mathml' ];
+$GLOBALS['wgDefaultUserOptions']['math'] = 'mathml';
+$GLOBALS['wgMaxShellMemory'] = 1228800;
+$GLOBALS['wgHiddenPrefs'][] = 'math';
+$GLOBALS['wgMathoidCli'] = [
+	'/opt/mediawiki/mathoid/cli.js',
+	'-c',
+	'/opt/mediawiki/mathoid/config.yaml'
+];
 
 ### MediaWiki Core default settings - START ###
 $GLOBALS['wgExternalLinkTarget'] = '_blank';

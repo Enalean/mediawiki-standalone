@@ -18,5 +18,15 @@ The package contains the file `LocalSettings.local.php-sample`. After extracting
 
 CLI Installer:
 ```sh
-
+php maintenance/install.php \
+	--dbserver=<hostname> \
+	--dbname=<databasename> \
+	--dbuser=<databaseuser> \
+	--dbpass=<databasepass> \
+	--pass=<adminpass> \
+	--scriptpath=/w \
+	TuleapFarmManagment \
+	<adminuser>
 ```
+
+Make sure to provide the required values in the placeholders

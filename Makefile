@@ -20,19 +20,23 @@ dev-setup: ## Setup environment MediaWiki Tuleap Edition (should only be run onc
 	cd dev/extensions/VisualEditor && git submodule foreach --recursive git reset --hard && git submodule update --init --recursive
 
 build-latest: ## Create a tarball of MediaWiki Tuleap Edition from the latest sources
-	cd dist && git clone -b $(MWVERSION) --depth 1 https://github.com/wikimedia/mediawiki
-	cp -rp buildfiles/* dist/mediawiki
-	cd dist/mediawiki && composer update --classmap-authoritative --no-dev --no-interaction --prefer-dist
-	mv dist/mediawiki/vendor dist/mediawiki/vendor_by_composer
-	cd dist/mediawiki && git submodule update --init --recursive
-	rm -rf dist/mediawiki/vendor
-	mv dist/mediawiki/vendor_by_composer dist/mediawiki/vendor
-	cd dist/mediawiki/extensions/VisualEditor && git submodule foreach --recursive git reset --hard && git submodule update --init --recursive
-	find dist/mediawiki/ -type d -name ".*" | xargs rm -rf
-	find dist/mediawiki/ -type f -name ".*" | xargs rm -rf
-	find dist/mediawiki/ -type f -name "Gruntfile.js" | xargs rm -rf
-	find dist/mediawiki/ -type f -name "jsduck.json" | xargs rm -rf
-	find dist/mediawiki/ -type f -name "phpunit.xml.dist" | xargs rm -rf
-	find dist/mediawiki/ -type d -name "tests" | xargs rm -rf
-	tar cfz dist/mediawiki.tar.gz dist/mediawiki/
+	mkdir -p dist/mediawiki/app/
+	cd dist/mediawiki/app && git clone -b $(MWVERSION) --depth 1 https://github.com/wikimedia/mediawiki w
+	cp -rp buildfiles/* dist/mediawiki/app/w/
+	cd dist/mediawiki/app/w && composer update --classmap-authoritative --no-dev --no-interaction --prefer-dist
+	mv dist/mediawiki/app/w/vendor dist/mediawiki/app/w/vendor_by_composer
+	cd dist/mediawiki/app/w && git submodule update --init --recursive
+	rm -rf dist/mediawiki/app/w/vendor
+	mv dist/mediawiki/app/w/vendor_by_composer dist/mediawiki/app/w/vendor
+	cd dist/mediawiki/app/w/extensions/VisualEditor && git submodule foreach --recursive git reset --hard && git submodule update --init --recursive
+	find dist/mediawiki/app/w/ -type d -name ".*" | xargs rm -rf
+	find dist/mediawiki/app/w/ -type f -name ".*" | xargs rm -rf
+	find dist/mediawiki/app/w/ -type f -name "Gruntfile.js" | xargs rm -rf
+	find dist/mediawiki/app/w/ -type f -name "jsduck.json" | xargs rm -rf
+	find dist/mediawiki/app/w/ -type f -name "phpunit.xml.dist" | xargs rm -rf
+	find dist/mediawiki/app/w/ -type d -name "tests" | xargs rm -rf
+	cd dist/mediawiki/ && wget http://buildservice.bluespice.com/webservices/REL1_35/mathoid.tar.gz
+	cd dist/mediawiki/ && tar xfvz mathoid.tar.gz
+	rm dist/mediawiki/mathoid.tar.gz
+	cd dist && tar cfz mediawiki.tar.gz mediawiki/
 	rm -rf dist/mediawiki/
