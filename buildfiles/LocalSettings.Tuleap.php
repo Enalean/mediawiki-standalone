@@ -1,15 +1,5 @@
 <?php
 
-//TODO: Move to `Extension:TuleapWikiFarm`
-$GLOBALS['wgScriptPath'] = '/mediawiki/' . FARMER_CALLED_INSTANCE;
-$GLOBALS['wgArticlePath'] = '/mediawiki/' . FARMER_CALLED_INSTANCE . '/wiki/$1';
-$GLOBALS['wgUploadPath'] = '/mediawiki/' . FARMER_CALLED_INSTANCE . '/img_auth.php';
-if ( FARMER_IS_ROOT_WIKI_CALL ) {
-	$GLOBALS['wgScriptPath'] = '/mediawiki/w';
-	$GLOBALS['wgArticlePath'] = '/mediawiki/wiki/$1';
-	$GLOBALS['wgUploadPath'] = '/mediawiki/w/img_auth.php';
-}
-
 ### Third Party Extensions - START ###
 // ERM27085 - Extensions that were enabled in MediaWiki 1.23
 wfLoadExtensions( [
