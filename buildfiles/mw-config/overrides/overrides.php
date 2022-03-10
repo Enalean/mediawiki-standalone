@@ -12,7 +12,7 @@ require_once( "$IP/LocalSettings.local.php" );
 
 ### Farm Instance Configuration Dispatcher ###
 $GLOBALS['wgTuleapFarmConfig'] = [
-	'instanceDir' => '/var/lib/tuleap/mediawiki-standalone/projects'
+	'instanceDir' => '/data/lib/tuleap/mediawiki-standalone/projects/'
 ];
 require_once( "$IP/extensions/TuleapWikiFarm/TuleapWikiFarm.setup.php" );
 HERE;
