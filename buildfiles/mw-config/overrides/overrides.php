@@ -4,7 +4,7 @@ $overrides['LocalSettingsGenerator'] = 'TuleapLocalSettingsGenerator';
 
 class TuleapLocalSettingsGenerator extends LocalSettingsGenerator {
 	function getText() {
-		$this->values['wgDefaultSkin'] = 'tuleapskin';
+		$this->values['wgDefaultSkin'] = 'tuleap';
 		$ls = parent::getText();
 		$tuleapFarm = <<<'HERE'
 ### Load local configuration varibales ###
