@@ -54,8 +54,9 @@ $GLOBALS['wgUrlProtocols'][] = 'redis://'; // From old MediaWiki 1.23
 ### Tuleap Specific - START ###
 wfLoadExtension( 'TuleapIntegration' );
 $GLOBALS['wgTuleapOAuth2Config']['redirectUri']
+	// `$wgScriptPath` already contains the project wikis instance name
 	= $GLOBALS['wgServer'] . $GLOBALS['wgScriptPath']
-		. '/Special:TuleapLogin/callback';
+		. '/wiki/Special:TuleapLogin/callback';
 
 wfLoadSkin( 'TuleapSkin' );
 ### Tuleap Specific - END ###
