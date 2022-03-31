@@ -11,9 +11,10 @@ wfLoadExtensions( [
 	'ParserFunctions',
 	'SyntaxHighlight_GeSHi',
 	'WikiEditor',
-	'VisualEditor'
+	'PdfBook'
 ] );
 $GLOBALS['wgPFEnableStringFunctions'] = true;
+$GLOBALS['wgPdfBookTab'] = true;
 
 $GLOBALS['wgDefaultUserOptions']['usebetatoolbar']     = 1;
 $GLOBALS['wgDefaultUserOptions']['usebetatoolbar-cgd'] = 1;
@@ -30,7 +31,8 @@ wfLoadExtensions( [
 	'ReplaceText',
 	'Scribunto',
 	'TemplateData',
-	'TextExtracts'
+	'TextExtracts',
+	'VisualEditor'
 ] );
 ### Third Party Extensions - END ###
 

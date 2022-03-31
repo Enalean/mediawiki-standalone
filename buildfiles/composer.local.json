@@ -30,6 +30,21 @@
 			}
 		}]
 	},{
+		"type": "package",
+		"package": [{
+			"name": "mediawiki/pdf-book",
+			"type": "mediawiki-extension",
+			"version": "2.0.5",
+			"require": {
+				"composer/installers": "~1.0"
+			},
+			"source": {
+				"url": "https://gitlab.com/organicdesign/PdfBook",
+				"type": "git",
+				"reference": "a394656d977726ffdaa367eab0ee2bfce9a60fd9"
+			}
+		}]
+	},{
 		"type": "vcs",
 		"url": "https://github.com/wikimedia/mediawiki-extensions-TuleapIntegration"
 	},{
@@ -42,6 +57,7 @@
 	"require": {
 		"mediawiki/math": "dev-REL1_35",
 		"mediawiki/labeled-section-transclusion": "dev-REL1_35",
+		"mediawiki/pdf-book": "2.0.5",
 		"mediawiki/tuleap-integration": "dev-master",
 		"mediawiki/tuleap-wiki-farm": "dev-master",
 		"mediawiki/tuleap-skin": "dev-master"
