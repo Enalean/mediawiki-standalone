@@ -25,7 +25,7 @@ build-latest: ## Create a tarball of MediaWiki Tuleap Edition from the latest so
 	cp -rp buildfiles/* dist/mediawiki/app/w/
 	cd dist/mediawiki/app/w && composer update --classmap-authoritative --no-dev --no-interaction --prefer-dist
 	mv dist/mediawiki/app/w/vendor dist/mediawiki/app/w/vendor_by_composer
-	cd dist/mediawiki/app/w && git submodule update --init --recursive
+	cd dist/mediawiki/app/w && git submodule update --init --depth 1 --recursive
 	rm -rf dist/mediawiki/app/w/vendor
 	mv dist/mediawiki/app/w/vendor_by_composer dist/mediawiki/app/w/vendor
 	cd dist/mediawiki/app/w/extensions/VisualEditor && git submodule foreach --recursive git reset --hard && git submodule update --init --recursive
