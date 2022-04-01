@@ -1,7 +1,7 @@
 
 SHELL = /bin/bash
 
-MWVERSION=1.35.5
+MWVERSION=1.35.6
 
 .DEFAULT_GOAL := help
 
