@@ -1,5 +1,8 @@
 <?php
 
+// Prevent password and realname change
+$GLOBALS['wgGroupPermissions']['user']['editmyprivateinfo'] = false;
+
 ### Third Party Extensions - START ###
 // ERM27085 - Extensions that were enabled in MediaWiki 1.23
 wfLoadExtensions( [

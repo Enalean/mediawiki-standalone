@@ -4,14 +4,14 @@
 		"package": [{
 			"name": "mediawiki/labeled-section-transclusion",
 			"type": "mediawiki-extension",
-			"version": "dev-REL1_35",
+			"version": "1.35.6",
 			"require": {
 				"composer/installers": "~1.0"
 			},
 			"source": {
 				"url": "https://gerrit.wikimedia.org/r/mediawiki/extensions/LabeledSectionTransclusion.git",
 				"type": "git",
-				"reference": "REL1_35"
+				"reference": "6438b1ee59ee1ad3678454bae36824b95e0701f5"
 			}
 		}]
 	},{
@@ -19,14 +19,14 @@
 		"package": [{
 			"name": "mediawiki/math",
 			"type": "mediawiki-extension",
-			"version": "dev-REL1_35",
+			"version": "1.35.6",
 			"require": {
 				"composer/installers": "~1.0"
 			},
 			"source": {
 				"url": "https://gerrit.wikimedia.org/r/mediawiki/extensions/Math.git",
 				"type": "git",
-				"reference": "REL1_35"
+				"reference": "f40ee5660a30adab6211eb8aaa00549a31042dc3"
 			}
 		}]
 	},{
@@ -55,17 +55,17 @@
 		"url": "https://github.com/wikimedia/mediawiki-skins-TuleapSkin"
 	}],
 	"require": {
-		"mediawiki/math": "dev-REL1_35",
-		"mediawiki/labeled-section-transclusion": "dev-REL1_35",
+		"mediawiki/math": "1.35.6",
+		"mediawiki/labeled-section-transclusion": "1.35.6",
 		"mediawiki/pdf-book": "2.0.5",
-		"mediawiki/tuleap-integration": "dev-master",
-		"mediawiki/tuleap-wiki-farm": "dev-master",
-		"mediawiki/tuleap-skin": "dev-master"
+		"mediawiki/tuleap-integration": "1.0.0-beta",
+		"mediawiki/tuleap-wiki-farm": "1.0.0-beta",
+		"mediawiki/tuleap-skin": "1.0.0-beta"
 	},
 	"extra": {
 		"merge-plugin": {
 			"include": [
-				"extensions/OATHAuth/composer.json"
+				"extensions/*/composer.json"
 			]
 		}
 	}

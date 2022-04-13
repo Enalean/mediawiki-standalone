@@ -11,5 +11,3 @@ $GLOBALS['wgTuleapOAuth2Config'] = [
 ];
 
 $GLOBALS['wgPhpCli'] = '/opt/remi/php74/root/usr/bin/php';
-// Prevent password and realname change
-$GLOBALS['wgGroupPermissions']['user']['editmyprivateinfo'] = false;
