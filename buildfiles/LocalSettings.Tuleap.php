@@ -1,7 +1,11 @@
 <?php
 
-// Prevent password and realname change
+// Disable password/realname change for any user
+$GLOBALS['wgGroupPermissions']['*']['editmyprivateinfo'] = false;
 $GLOBALS['wgGroupPermissions']['user']['editmyprivateinfo'] = false;
+$GLOBALS['wgGroupPermissions']['reader']['editmyprivateinfo'] = false;
+$GLOBALS['wgGroupPermissions']['editor']['editmyprivateinfo'] = false;
+$GLOBALS['wgGroupPermissions']['sysop']['editmyprivateinfo'] = false;
 
 ### Third Party Extensions - START ###
 // ERM27085 - Extensions that were enabled in MediaWiki 1.23
@@ -63,4 +67,25 @@ $GLOBALS['wgTuleapOAuth2Config']['redirectUri']
 	= $GLOBALS['wgServer'] . '/mediawiki/_oauth/Special:TuleapLogin/callback';
 
 wfLoadSkin( 'TuleapSkin' );
+
+// Add explicit "reader" group (maps to 'is_reader' key in permission data coming from Tuleap)
+$GLOBALS['wgAdditionalGroups']['reader'] = [];
+$GLOBALS['wgGroupPermissions']['reader']['read'] = true;
+
+// Platform access type (https://tuleap.net/plugins/tracker/?aid=25738)
+$GLOBALS['wgTuleapAccessPreset'] = 'protected';
+switch ( $GLOBALS['wgTuleapAccessPreset'] ) {
+	case 'public':
+		// Accessible by anonymous
+		$GLOBALS['wgGroupPermissions']['*']['read'] = true;
+		break;
+	case 'protected':
+		// Login is required
+		$GLOBALS['wgGroupPermissions']['user']['read'] = true;
+		break;
+	case 'private':
+		// Login is required + explicit `is_reader` assignments
+		$GLOBALS['wgGroupPermissions']['user']['read'] = false;
+		break;
+}
 ### Tuleap Specific - END ###
